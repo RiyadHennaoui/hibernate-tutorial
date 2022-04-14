@@ -40,10 +40,10 @@ public class ConnectionHibernate {
 //            thisStudent.setFirstName("Scooby");
 //            session.getTransaction().commit();
 
-            session = factory.getCurrentSession();
-            session.beginTransaction();
-            session.createQuery("update Student set email='foo@gmail.com'").executeUpdate();
-            session.getTransaction().commit();
+//            session = factory.getCurrentSession();
+//            session.beginTransaction();
+//            session.createQuery("update Student set email='foo@gmail.com'").executeUpdate();
+//            session.getTransaction().commit();
 
             //Read with Query
             /**
@@ -68,6 +68,15 @@ public class ConnectionHibernate {
 
             session.getTransaction().commit();
             */
+
+            //Delete
+
+            session = factory.getCurrentSession();
+            session.beginTransaction();
+            Student delStudent = session.get(Student.class, 1L);
+            session.delete(delStudent);
+            session.createQuery("delete from Student where id=3").executeUpdate();
+            session.getTransaction().commit();
 
 
 
