@@ -18,28 +18,35 @@ public class ConnectionHibernate {
         Session session = factory.getCurrentSession();
 
         try{
-            Student tempStudent1 = new Student("Pauleza", "Wallaz", "wall@domain.com");
-            Student tempStudent2 = new Student("Mike", "Doe", "mike@domain.com");
-            Student tempStudent3 = new Student("Bonita", "Applebaum", "bonita@domain.com");
-
-            //create students in database
-            session.beginTransaction();
+//            Student tempStudent1 = new Student("Pauleza", "Wallaz", "wall@domain.com");
+//            Student tempStudent2 = new Student("Mike", "Doe", "mike@yahoo.com");
+//            Student tempStudent3 = new Student("Bonita", "Applebaum", "bonita@gmail.com");
+//
+//            //create students in database
+//            session.beginTransaction();
 //            session.save(tempStudent1);
-//            session.save(tempStudent2);
-//            session.save(tempStudent3);
+////            session.save(tempStudent2);
+////            session.save(tempStudent3);
+//
+//            session.getTransaction().commit();
+//
+//            //Read student in database
+//            session = factory.getCurrentSession();
+//
+//            session.beginTransaction();
+//            Student thisStudent = session.get(Student.class, tempStudent1.getId());
+//            System.out.println(thisStudent);
+//            //Update
+//            thisStudent.setFirstName("Scooby");
+//            session.getTransaction().commit();
 
-            session.getTransaction().commit();
-
-            //Read student in database
             session = factory.getCurrentSession();
-
             session.beginTransaction();
-            Student thisStudent = session.get(Student.class, tempStudent1.getId());
-            System.out.println(thisStudent);
+            session.createQuery("update Student set email='foo@gmail.com'").executeUpdate();
             session.getTransaction().commit();
 
             //Read with Query
-
+            /**
             session = factory.getCurrentSession();
 
             session.beginTransaction();
@@ -60,6 +67,8 @@ public class ConnectionHibernate {
             displayStudents(students);
 
             session.getTransaction().commit();
+            */
+
 
 
         }finally {
