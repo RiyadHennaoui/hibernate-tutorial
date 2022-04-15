@@ -1,19 +1,22 @@
-package fr.afpa.onetoone.controller;
+package fr.afpa.onetoone.controller.onetomany;
 
+import fr.afpa.onetoone.model.Course;
 import fr.afpa.onetoone.model.Instructor;
 import fr.afpa.onetoone.model.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class OneToOneBidirectionnalApp {
+public class OneToManyApp {
 
     public static void main(String[] args) {
+
 
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Instructor.class)
                 .addAnnotatedClass(InstructorDetail.class)
+                .addAnnotatedClass(Course.class)
                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
@@ -32,24 +35,16 @@ public class OneToOneBidirectionnalApp {
 
         try {
             session.beginTransaction();
-//            session.save(tempInstructor);
-//            session.save(tempInstructor2);
 
-            InstructorDetail instructorDetail1 = session.get(InstructorDetail.class, 2);
-
-            System.out.println("the associated instructor: " + instructorDetail1.getInstructor());
-
+            session.save(tempInstructor);
+            session.save(tempInstructor2);
 
             session.getTransaction().commit();
-
-        }catch (Exception ex){
-            ex.printStackTrace();
 
         } finally {
             session.close();
             factory.close();
         }
-
 
     }
 }

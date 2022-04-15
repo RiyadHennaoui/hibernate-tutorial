@@ -1,4 +1,4 @@
-package fr.afpa.onetoone.controller;
+package fr.afpa.onetoone.controller.onetoone;
 
 import fr.afpa.onetoone.model.Instructor;
 import fr.afpa.onetoone.model.InstructorDetail;
@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class OneToOneBidirectionnalDeleteDemoApp {
+public class OneToOneBidirectionnalApp {
 
     public static void main(String[] args) {
 
@@ -38,12 +38,6 @@ public class OneToOneBidirectionnalDeleteDemoApp {
             InstructorDetail instructorDetail1 = session.get(InstructorDetail.class, 2);
 
             System.out.println("the associated instructor: " + instructorDetail1.getInstructor());
-
-            // remeove the associated object reference we need to break bi-directional link
-            instructorDetail1.getInstructor().setInstructorDetail(null);
-            session.delete(instructorDetail1);
-
-            System.out.println("deleted ! " + instructorDetail1);
 
 
             session.getTransaction().commit();
