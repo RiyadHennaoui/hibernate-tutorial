@@ -18,17 +18,17 @@ public class ConnectionHibernate {
         Session session = factory.getCurrentSession();
 
         try{
-//            Student tempStudent1 = new Student("Pauleza", "Wallaz", "wall@domain.com");
-//            Student tempStudent2 = new Student("Mike", "Doe", "mike@yahoo.com");
-//            Student tempStudent3 = new Student("Bonita", "Applebaum", "bonita@gmail.com");
-//
-//            //create students in database
-//            session.beginTransaction();
-//            session.save(tempStudent1);
-////            session.save(tempStudent2);
-////            session.save(tempStudent3);
-//
-//            session.getTransaction().commit();
+            Student tempStudent1 = new Student("Pauleza", "Wallaz", "wall@domain.com");
+            Student tempStudent2 = new Student("Mike", "Doe", "mike@yahoo.com");
+            Student tempStudent3 = new Student("Bonita", "Applebaum", "bonita@gmail.com");
+
+            //create students in database
+            session.beginTransaction();
+            session.save(tempStudent1);
+            session.save(tempStudent2);
+            session.save(tempStudent3);
+
+            session.getTransaction().commit();
 //
 //            //Read student in database
 //            session = factory.getCurrentSession();

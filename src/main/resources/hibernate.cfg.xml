@@ -8,7 +8,7 @@
 
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgresql://localhost:5432/hb_student_tracker</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5433/hb_student_tracker</property>
         <property name="connection.username">hbstudent</property>
         <property name="connection.password">afpa123</property>
 
@@ -25,7 +25,7 @@
 		<property name="current_session_context_class">thread</property>
 
         <!-- create / create-drop / update -->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
  
     </session-factory>
 

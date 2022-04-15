@@ -1,13 +1,12 @@
 package fr.afpa.onetoone.controller;
 
-import fr.afpa.model.entity.Student;
 import fr.afpa.onetoone.model.Instructor;
 import fr.afpa.onetoone.model.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class OneToOneApp {
+public class OneToOneBidirectionnalApp {
 
     public static void main(String[] args) {
 
@@ -33,14 +32,22 @@ public class OneToOneApp {
 
         try {
             session.beginTransaction();
+//            session.save(tempInstructor);
+//            session.save(tempInstructor2);
 
-            session.save(tempInstructor);
-            session.save(tempInstructor2);
+            InstructorDetail instructorDetail1 = session.get(InstructorDetail.class, 2);
+
+            System.out.println("the associated instructor: " + instructorDetail1.getInstructor());
+
 
             session.getTransaction().commit();
 
+        }catch (Exception ex){
+            ex.printStackTrace();
+
         } finally {
             session.close();
+            factory.close();
         }
 
 
